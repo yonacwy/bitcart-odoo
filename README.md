@@ -9,7 +9,7 @@ This version requires the following:
 
 ## Installing the Plugin
 
-1. Add `payment_bitcartcc` directory to your addons directory (You can take [the latest release](https://github.com/bitcartcc/bitcart-odoo/releases/latest), unzip it and get `payment_bitcartcc` from there)
+1. Install the plugin via [App store](https://apps.odoo.com/apps/modules/16.0/payment_bitcartcc) or add `payment_bitcartcc` directory to your addons directory (You can take [the latest release](https://github.com/bitcartcc/bitcart-odoo/releases/latest), unzip it and get `payment_bitcartcc` from there)
 
 2. From your Odoo apps page, activate "BitcartCC Payments" app
 
