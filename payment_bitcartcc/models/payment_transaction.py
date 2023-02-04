@@ -1,4 +1,5 @@
 import logging
+from urllib.parse import quote_plus
 
 import requests
 from odoo import models
@@ -19,7 +20,10 @@ class PaymentTransaction(models.Model):
             return res
         base_url = self.provider_id.get_base_url()
         data = requests.post(
-            urls.url_join(self.provider_id.api_url, "/invoices"),
+            urls.url_join(
+                self.provider_id.api_url,
+                f"/invoices/order_id/{quote_plus(processing_values['reference'])}",
+            ),
             json={
                 "price": processing_values["amount"],
                 "currency": self.currency_id.name,

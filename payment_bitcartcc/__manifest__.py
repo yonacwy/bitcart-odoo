@@ -1,6 +1,6 @@
 {
     "name": "BitcartCC Payments",
-    "version": "1.0",
+    "version": "1.0.1",
     "author": "BitcartCC",
     "category": "Accounting/Payment Providers",
     "summary": "Self-hosted, open-source cryptocurrency payment processor and developer solutions",
