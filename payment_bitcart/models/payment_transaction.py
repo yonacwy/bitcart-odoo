@@ -16,7 +16,7 @@ class PaymentTransaction(models.Model):
 
     def _get_specific_rendering_values(self, processing_values):
         res = super()._get_specific_rendering_values(processing_values)
-        if self.provider_code != "bitcartcc":
+        if self.provider_code != "bitcart":
             return res
         base_url = self.provider_id.get_base_url()
         data = requests.post(
@@ -44,7 +44,7 @@ class PaymentTransaction(models.Model):
         }
 
     def _get_tx_from_notification_data(self, provider_code, notification_data):
-        """Override of payment to find the transaction based on BitcartCC data.
+        """Override of payment to find the transaction based on Bitcart data.
 
         :param str provider_code: The code of the provider that handled the transaction
         :param dict notification_data: The notification data sent by the provider
@@ -53,27 +53,27 @@ class PaymentTransaction(models.Model):
         :raise: ValidationError if the data match no transaction
         """
         tx = super()._get_tx_from_notification_data(provider_code, notification_data)
-        if provider_code != "bitcartcc" or len(tx) == 1:
+        if provider_code != "bitcart" or len(tx) == 1:
             return tx
 
         reference = notification_data.get("order_id")
         tx = self.search(
-            [("reference", "=", reference), ("provider_code", "=", "bitcartcc")]
+            [("reference", "=", reference), ("provider_code", "=", "bitcart")]
         )
         if not tx:
             raise ValidationError(
-                f"BitcartCC: No transaction found matching reference {reference}."
+                f"Bitcart: No transaction found matching reference {reference}."
             )
         return tx
 
     def _process_notification_data(self, notification_data):
         super()._process_notification_data(notification_data)
-        if self.provider_code != "bitcartcc":
+        if self.provider_code != "bitcart":
             return
 
         txn_id = notification_data.get("id")
         if not txn_id:
-            raise ValidationError(f"BitcartCC: Missing value for txn_id ({txn_id}).")
+            raise ValidationError(f"Bitcart: Missing value for txn_id ({txn_id}).")
         self.provider_reference = txn_id
 
         payment_status = notification_data.get("status")
@@ -86,5 +86,5 @@ class PaymentTransaction(models.Model):
                 self.reference,
             )
             self._set_error(
-                f"BitcartCC: Received data with invalid payment status: {payment_status}"
+                f"Bitcart: Received data with invalid payment status: {payment_status}"
             )

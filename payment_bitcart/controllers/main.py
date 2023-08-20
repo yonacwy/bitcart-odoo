@@ -12,8 +12,8 @@ _logger = logging.getLogger(__name__)
 
 
 class BitcartController(http.Controller):
-    _return_url = "/payment/bitcartcc/return/"
-    _webhook_url = "/payment/bitcartcc/webhook/"
+    _return_url = "/payment/bitcart/return/"
+    _webhook_url = "/payment/bitcart/webhook/"
 
     @http.route(
         _return_url,
@@ -23,7 +23,7 @@ class BitcartController(http.Controller):
         csrf=False,
         save_session=False,
     )
-    def bitcartcc_return_from_checkout(self):
+    def bitcart_return_from_checkout(self):
         return request.redirect("/payment/status")
 
     @http.route(
@@ -32,11 +32,11 @@ class BitcartController(http.Controller):
     def bitcart_webhook(self):
         data = request.get_json_data()
         _logger.info(
-            "notification received from BitcartCC with data:\n%s", pprint.pformat(data)
+            "notification received from Bitcart with data:\n%s", pprint.pformat(data)
         )
         try:
             tx_sudo = request.env["payment.transaction"].sudo()
-            provider = tx_sudo.provider_id.search([("code", "=", "bitcartcc")])
+            provider = tx_sudo.provider_id.search([("code", "=", "bitcart")])
             api_url = provider.api_url
             response = requests.get(urls.url_join(api_url, f"/invoices/{data['id']}"))
             response.raise_for_status()
@@ -46,7 +46,7 @@ class BitcartController(http.Controller):
                 or full_invoice["status"] != data["status"]
             ):
                 raise Forbidden()
-            tx_sudo._handle_notification_data("bitcartcc", full_invoice)
+            tx_sudo._handle_notification_data("bitcart", full_invoice)
         except (
             ValidationError,
             requests.exceptions.ConnectionError,

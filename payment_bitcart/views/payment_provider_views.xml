@@ -2,19 +2,19 @@
 <odoo>
 
     <record id="payment_provider_form" model="ir.ui.view">
-        <field name="name">BitcartCC Provider Form</field>
+        <field name="name">Bitcart Provider Form</field>
         <field name="model">payment.provider</field>
         <field name="inherit_id" ref="payment.payment_provider_form"/>
         <field name="arch" type="xml">
             <group name="provider_credentials" position='inside'>
-                <group attrs="{'invisible': [('code', '!=', 'bitcartcc')]}">
+                <group attrs="{'invisible': [('code', '!=', 'bitcart')]}">
                     <field name="api_url"
-                           attrs="{'required':[('code', '=', 'bitcartcc'), ('state', '!=', 'disabled')]}"/>
+                           attrs="{'required':[('code', '=', 'bitcart'), ('state', '!=', 'disabled')]}"/>
                     <field name="admin_url"
-                           attrs="{'required':[('code', '=', 'bitcartcc'), ('state', '!=', 'disabled')]}"/>
+                           attrs="{'required':[('code', '=', 'bitcart'), ('state', '!=', 'disabled')]}"/>
                     <field name="store_id"
-                           attrs="{'required':[('code', '=', 'bitcartcc'), ('state', '!=', 'disabled')]}"/>
-                    <a href="https://docs.bitcartcc.com/integrations/odoo"
+                           attrs="{'required':[('code', '=', 'bitcart'), ('state', '!=', 'disabled')]}"/>
+                    <a href="https://docs.bitcart.ai/integrations/odoo"
                        target="_blank"
                        colspan="2">
                         How to configure the odoo integration?

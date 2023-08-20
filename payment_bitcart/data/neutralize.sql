@@ -1,4 +1,4 @@
--- disable bitcartcc payment provider
+-- disable bitcart payment provider
 UPDATE payment_provider
    SET api_url = NULL,
        admin_url = NULL,

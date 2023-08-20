@@ -4,8 +4,8 @@ from . import controllers, models  # noqa: F401
 
 
 def post_init_hook(cr, registry):
-    setup_provider(cr, registry, "bitcartcc")
+    setup_provider(cr, registry, "bitcart")
 
 
 def uninstall_hook(cr, registry):
-    reset_payment_provider(cr, registry, "bitcartcc")
+    reset_payment_provider(cr, registry, "bitcart")
