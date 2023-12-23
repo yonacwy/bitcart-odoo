@@ -7,13 +7,16 @@
         <field name="inherit_id" ref="payment.payment_provider_form"/>
         <field name="arch" type="xml">
             <group name="provider_credentials" position='inside'>
-                <group attrs="{'invisible': [('code', '!=', 'bitcart')]}">
+                <group invisible="code != 'bitcart'">
                     <field name="api_url"
-                           attrs="{'required':[('code', '=', 'bitcart'), ('state', '!=', 'disabled')]}"/>
+                           required="code != 'bitcart'"   
+                           state="disabled"/>                 
                     <field name="admin_url"
-                           attrs="{'required':[('code', '=', 'bitcart'), ('state', '!=', 'disabled')]}"/>
+                           required="code != 'bitcart'"   
+                           state="disabled"/>                     
                     <field name="store_id"
-                           attrs="{'required':[('code', '=', 'bitcart'), ('state', '!=', 'disabled')]}"/>
+                           required="code != 'bitcart'"   
+                           state="disabled"/>                      
                     <a href="https://docs.bitcart.ai/integrations/odoo"
                        target="_blank"
                        colspan="2">
