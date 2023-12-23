@@ -24,3 +24,16 @@ After you have enabled the Bitcart plugin, the configuration steps are:
 3. Enter your store ID (click on id field in Bitcart's admin panel to copy id)
 
 Enjoy!
+
+
+###############
+
+Update:
+Bitcart for Odoo 17 is working, still need to test connecting to a bitcart instance
+
+## Plugin Configuration
+"Same as Above" plus 
+(Payment Followup)
+4. Payment Journal
+
+Let me know if any issues...
