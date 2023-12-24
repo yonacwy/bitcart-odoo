@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <!-- Main Menu -->
+        <menuitem name="Bitcart"
+            id="menu_action_bitcart_main_menu"
+            sequence="1" />
+  
+        <!-- Menu -->
+        <menuitem name="Dashboard"
+            id="menu_action_bitcart_dashboard"
+            action="action_bitcart_main_view"
+            parent="menu_action_bitcart_main_menu"
+            sequence="2" />        
+
+        <!-- Menu -->
+        <menuitem name="Wallets"
+            id="menu_action_bitcart_wallets"
+            action="action_bitcart_main_view"
+            parent="menu_action_bitcart_main_menu"
+            sequence="3" />       
+ 
+        <!-- Menu -->
+        <menuitem name="Stores"
+            id="menu_action_bitcart_stores"
+            action="action_bitcart_main_view"
+            parent="menu_action_bitcart_main_menu"
+            sequence="4" />   
+                                           
+        <!-- Menu -->
+        <menuitem name="Discounts"
+            id="menu_action_bitcart_discounts"
+            action="action_bitcart_main_view"
+            parent="menu_action_bitcart_main_menu"
+            sequence="5" />
+
+        <!-- Menu -->
+        <menuitem name="Products"
+            id="menu_action_bitcart_products"
+            action="action_bitcart_main_view"
+            parent="menu_action_bitcart_main_menu"
+            sequence="7" />
+               
+        <!-- Menu -->
+        <menuitem name="Invoices"
+            id="menu_action_bitcart_invoices"
+            action="action_bitcart_main_view"
+            parent="menu_action_bitcart_main_menu"
+            sequence="8" /> 
+       
+        <!-- Menu -->
+        <menuitem name="Payouts"
+            id="menu_action_bitcart_payouts"
+            action="action_bitcart_main_view"
+            parent="menu_action_bitcart_main_menu"
+            sequence="9" /> 
+                
+        <!-- Menu -->
+        <menuitem name="Settings"
+            id="menu_action_bitcart_settings"
+            action="action_bitcart_main_view"
+            parent="menu_action_bitcart_main_menu"
+            sequence="10" /> 
+            
+         <!-- Sub Menu -->
+        <menuitem name="Payment Provider"
+            id="menu_action_bitcart_payment_provider"
+            action="payment.action_payment_provider"
+            parent="menu_action_bitcart_settings"
+            sequence="111" />        
+
+         <!-- Sub Menu -->
+        <menuitem name="Payment Transaction"
+            id="menu_action_bitcart_payment_transaction"
+            action="payment.action_payment_transaction"
+            parent="menu_action_bitcart_settings"
+            sequence="112" />        
+
+
+    </data>
+</odoo>
